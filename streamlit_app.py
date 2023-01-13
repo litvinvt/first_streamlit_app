@@ -54,7 +54,7 @@ streamlit.text(my_data_row)
 streamlit.header("!!Snowflake data:")
 #my_cur = my_cnx.cursor()
 my_cur.execute("select * from fruit_load_list")
-my_data_row = my_cur.fetchone()
+my_data_row = my_cur.fetchall()
 streamlit.text("My fruit load list containts:")
 streamlit.dataframe(my_data_row)
 
