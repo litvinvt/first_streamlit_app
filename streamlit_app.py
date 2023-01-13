@@ -43,11 +43,21 @@ try:
 except URLError as e:
   streamlit.error()
   
-  
-streamlit.stop()
+
+
+def get_sf_fruit_list(v_cur):
+    v_cur.execute("select * from fruit_load_list")
+    return v_cur.fetchall()
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
+streamlit.dataframe(get_sf_fruit_list(my_cur))
+
+
+  
+streamlit.stop()
+
+
 my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 my_data_row = my_cur.fetchone()
 streamlit.text("Hello from Snowflake:")
