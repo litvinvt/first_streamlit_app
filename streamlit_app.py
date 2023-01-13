@@ -49,10 +49,17 @@ def get_sf_fruit_list(v_cur):
     v_cur.execute("select * from fruit_load_list")
     return v_cur.fetchall()
 
+def add_to_sf_fruit_list(v_cur, v_new_val):
+    v_cur.execute("insert into fruit_load_list value ('"+v_new_val+"')")
+    return "Thanks for adding " + v_new_val
+
 if streamlit.button('Get Fruit Load list'):
     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
     my_cur = my_cnx.cursor()
+    streamlit.dataframe(add_to_sf_fruit_list(my_cur, 'dragonfruit'))
     streamlit.dataframe(get_sf_fruit_list(my_cur))
+    
+    
 
 
   
