@@ -56,6 +56,6 @@ streamlit.header("!!Snowflake data:")
 my_cur.execute("select * from fruit_load_list")
 my_data_row = my_cur.fetchone()
 streamlit.text("My fruit load list containts:")
-streamlit.text(my_data_row)
+streamlit.dataframe(my_data_row)
 
 
