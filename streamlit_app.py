@@ -56,7 +56,7 @@ def add_to_sf_fruit_list(v_cur, v_new_val):
 if streamlit.button('Get Fruit Load list'):
     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
     my_cur = my_cnx.cursor()
-    streamlit.dataframe(add_to_sf_fruit_list(my_cur, 'dragonfruit'))
+    streamlit.text(add_to_sf_fruit_list(my_cur, 'Carry'))
     streamlit.dataframe(get_sf_fruit_list(my_cur))
     
     
